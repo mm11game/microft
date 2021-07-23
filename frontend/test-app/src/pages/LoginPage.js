@@ -12,17 +12,19 @@ const LoginPage = () => {
   const loginAndSaveToken = async () => {
     //- 비밀번호를 8글자 미만으로 하여 백엔드 API 호출 시, 401 Unauthorized 실패 응답 코드를 받는다.
     const body = { ...details }
-    const { data } = await axios.post(
-      'http://localhost:5000/user/login',
-      body,
-      {
-        'Context-Type': 'application/json',
-      },
-    )
+
+    const { data } = await axios.post('http://localhost:5000/login', body, {
+      'Context-Type': 'application/json',
+    })
+    console.log(data)
+    if (data.err) {
+      alert('비밀번호를 확인해주세요')
+      return
+    }
     setToken(() => data.token)
     window.localStorage.setItem('Token', data.token)
 
-    history.push('/')
+    history.push('/mypage/order')
   }
 
   return (
