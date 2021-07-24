@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import React, { useState, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { tokenState } from '../atom/atom'
 import '../css/RegisterPage.css'

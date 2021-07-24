@@ -9,6 +9,7 @@ dotenv.config();
 const userRoutes = require("./routes/userRoute.js");
 const mypageRoutes = require("./routes/mypageRoute.js");
 const orderRoutes = require("./routes/orderRoute.js");
+const { notFound, errorHandler } = require("./middleware/errorhandle");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,6 +34,9 @@ if (process.env.NODE_ENV === "production") {
     )
   );
 }
+
+app.use(notFound);
+app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 

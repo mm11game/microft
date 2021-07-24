@@ -28,7 +28,8 @@ module.exports = {
     const { email, password } = req.body;
 
     if (password.length < 8) {
-      res.status(401).send("401 Unauthorized");
+      res.status(401);
+      throw new Error("패스워드 짧음");
     }
 
     const user = await User.findOne({

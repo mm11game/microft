@@ -6,6 +6,7 @@ import { tokenState } from '../atom/atom'
 const MyPageDetail = ({ match }) => {
   const [token, setToken] = useRecoilState(tokenState)
   const [item, setItem] = useState({})
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
@@ -18,7 +19,8 @@ const MyPageDetail = ({ match }) => {
       setItem(() => data)
     }
     fetchData()
-  }, [])
+  }, [match, token])
+
   return (
     <div
       style={{

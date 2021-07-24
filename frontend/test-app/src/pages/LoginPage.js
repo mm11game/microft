@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { tokenState } from '../atom/atom'
 const axios = require('axios')
@@ -11,16 +11,20 @@ const LoginPage = () => {
 
   const loginAndSaveToken = async () => {
     //- 비밀번호를 8글자 미만으로 하여 백엔드 API 호출 시, 401 Unauthorized 실패 응답 코드를 받는다.
-    const body = { ...details }
+    if (details.password.length < 8) {
+      alert('패스워드가 짧습니다.')
+    }
 
+    const body = { ...details }
     const { data } = await axios.post('http://localhost:5000/login', body, {
       'Context-Type': 'application/json',
     })
 
-    if (data.err || !data) {
+    if (data.err || data === undefined) {
       alert('비밀번호를 확인해주세요')
       return
     }
+
     setToken(() => data.token)
     window.localStorage.setItem('Token', data.token)
 

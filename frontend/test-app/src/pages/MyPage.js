@@ -25,7 +25,7 @@ const MyPage = ({ location }) => {
       setTotalPage(() => data.totalPages)
     }
     fetchData()
-  }, [page])
+  }, [page, token])
 
   const handlePage = (e) => {
     history.push(`/mypage/order?page=${e.target.value - 1}`)
@@ -43,8 +43,8 @@ const MyPage = ({ location }) => {
         return <OrderObj key={order.id} order={order} />
       })}
       <div>
-        {[...Array(totalPage).keys()].map((x) => (
-          <button onClick={handlePage} value={x + 1}>
+        {[...Array(totalPage).keys()].map((x, idx) => (
+          <button key={idx} onClick={handlePage} value={x + 1}>
             {x + 1}
           </button>
         ))}

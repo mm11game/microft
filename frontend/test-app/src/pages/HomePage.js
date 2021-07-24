@@ -8,7 +8,7 @@ import { tokenState } from '../atom/atom'
 const HomePage = () => {
   const [items, setItems] = useState([])
   const [token, setToken] = useRecoilState(tokenState)
-  const [orderState, setOrderState] = useState({})
+  // const [orderState, setOrderState] = useState({})
 
   const history = useHistory()
 
