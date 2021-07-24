@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-const port = 5000;
 const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
@@ -24,10 +23,13 @@ app.use("/", userRoutes);
 app.use("/mypage", mypageRoutes);
 app.use("/order", orderRoutes);
 
-// app.use(express.static(path.join(__dirname, "build")));
-// app.get("*", (req, res) =>
-//   res.sendFile(path.resolve(__dirname, "build", "index.html"))
-// );
+app.use(express.static(path.join(__dirname, "..", "/frontend/test-app/build")));
+app.get("*", (req, res) =>
+  res.sendFile(
+    path.resolve(__dirname, "", "frontend", "test-app", "build", "index.html")
+  )
+);
+const port = 5000;
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
