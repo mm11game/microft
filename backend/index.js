@@ -23,12 +23,17 @@ app.use("/", userRoutes);
 app.use("/mypage", mypageRoutes);
 app.use("/order", orderRoutes);
 
-app.use(express.static(path.join(__dirname, "..", "/frontend/test-app/build")));
-app.get("*", (req, res) =>
-  res.sendFile(
-    path.resolve(__dirname, "", "frontend", "test-app", "build", "index.html")
-  )
-);
+if (process.env.NODE_ENV === "production") {
+  app.use(
+    express.static(path.join(__dirname, "..", "/frontend/test-app/build"))
+  );
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "", "frontend", "test-app", "build", "index.html")
+    )
+  );
+}
+
 const port = 5000;
 
 app.listen(port, () => {

@@ -9,6 +9,13 @@ const config = {
     database: "microft",
     dialect: "mysql",
   },
+  production: {
+    host: process.env.DBHOST,
+    username: process.env.DBUSER,
+    password: process.env.DBPASSWORD,
+    database: "microft",
+    dialect: "mysql",
+  },
 };
 
 module.exports = config;
