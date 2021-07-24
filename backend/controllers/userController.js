@@ -6,7 +6,6 @@ module.exports = {
   signUp: asyncHandler(async (req, res) => {
     const { email, password, mobile } = req.body;
 
-    console.log("@@@@@@@@@@@", req.body);
     const user = await User.findOne({
       where: { email },
     });
