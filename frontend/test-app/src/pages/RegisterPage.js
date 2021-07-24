@@ -61,19 +61,17 @@ const RegisterPage = () => {
         style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="이메일"
         name="email"
-        onChange={(e) => {
-          setValid(false)
+        onChange={(e) =>
           setDetails({ ...details, email: e.target.value })
-        }}></input>
+        }></input>
       <input
         className={validPassword ? 'invalid' : null}
         style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="비밀번호"
         name="password"
-        onChange={(e) => {
-          setValidPassword(false)
+        onChange={(e) =>
           setDetails({ ...details, password: e.target.value })
-        }}></input>
+        }></input>
       <input
         style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="비밀번호확인"
