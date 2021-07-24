@@ -9,7 +9,7 @@ const Header = () => {
   const handleLogout = () => {
     window.localStorage.removeItem('Token')
     setToken(() => '')
-    history.push('/')
+    history.push('/logout')
   }
   return (
     <div>

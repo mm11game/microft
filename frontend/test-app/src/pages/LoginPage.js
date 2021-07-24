@@ -16,8 +16,8 @@ const LoginPage = () => {
     const { data } = await axios.post('http://localhost:5000/login', body, {
       'Context-Type': 'application/json',
     })
-    console.log(data)
-    if (data.err) {
+
+    if (data.err || !data) {
       alert('비밀번호를 확인해주세요')
       return
     }
@@ -28,24 +28,33 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
-      <h1>로그인페이지</h1>
-      <div>
-        <Link to="/">Back</Link>
-      </div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}>
+      <h1 style={{ padding: '10px', marginBottom: '10px' }}>로그인하기</h1>
+
       <input
+        style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="email"
         name="email"
         onChange={(e) =>
           setDetails({ ...details, email: e.target.value })
         }></input>
       <input
+        style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="password"
         name="password"
         onChange={(e) =>
           setDetails({ ...details, password: e.target.value })
         }></input>
-      <button onClick={loginAndSaveToken}>완료</button>
+      <button
+        style={{ padding: '10px', marginBottom: '10px' }}
+        onClick={loginAndSaveToken}>
+        완료
+      </button>
     </div>
   )
 }

@@ -29,7 +29,7 @@ module.exports = {
     const { email, password } = req.body;
 
     if (password.length < 8) {
-      res.status(401).send("401 Unauthorized");
+      res.status(401).send({ err: new Error() });
     }
 
     const user = await User.findOne({
@@ -37,8 +37,8 @@ module.exports = {
     });
 
     if (!user) {
-      res.status(401);
-      throw new Error("해당 유저가 없음");
+      console.log("해당유저가 없음");
+      res.status(401).send({ err: new Error() });
     } else {
       if (password !== user.password) {
         res.send({ err: new Error() });

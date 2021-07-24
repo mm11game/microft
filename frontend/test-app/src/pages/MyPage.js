@@ -32,15 +32,23 @@ const MyPage = ({ location }) => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
       {orders.map((order) => {
         return <OrderObj key={order.id} order={order} />
       })}
-      {[...Array(totalPage).keys()].map((x) => (
-        <button onClick={handlePage} value={x + 1}>
-          {x + 1}
-        </button>
-      ))}
+      <div>
+        {[...Array(totalPage).keys()].map((x) => (
+          <button onClick={handlePage} value={x + 1}>
+            {x + 1}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
