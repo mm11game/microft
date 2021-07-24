@@ -10,7 +10,6 @@ const LoginPage = () => {
   const [token, setToken] = useRecoilState(tokenState)
 
   const loginAndSaveToken = async () => {
-    //- 비밀번호를 8글자 미만으로 하여 백엔드 API 호출 시, 401 Unauthorized 실패 응답 코드를 받는다.
     if (details.password.length < 8) {
       alert('패스워드가 짧습니다.')
     }
@@ -20,7 +19,7 @@ const LoginPage = () => {
       'Context-Type': 'application/json',
     })
 
-    if (data.err || data === undefined) {
+    if (data.err) {
       alert('비밀번호를 확인해주세요')
       return
     }
