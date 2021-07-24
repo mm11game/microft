@@ -9,13 +9,10 @@ const ItemObj = ({ item, handleOrder }) => {
         height: '200px',
         padding: '10px',
         marginBottom: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
       }}>
-      <div>{item.image}</div>
       <div>
+        <div>{item.itemName}</div>
+        <div>{item.image}</div>
         <button
           onClick={() => {
             handleOrder(item.id)

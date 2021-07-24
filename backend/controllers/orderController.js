@@ -1,7 +1,6 @@
 const { Item, Order } = require("../models");
 const asyncHandler = require("express-async-handler");
 const item = require("../models/item");
-const { sleep } = require("../util/sleep");
 
 module.exports = {
   //get
@@ -28,7 +27,6 @@ module.exports = {
       include: [{ model: Order, where: { user_id: req.tokenUser.id } }],
     });
 
-    await sleep(1000);
     res.send({ totalPages, currentPage: parseInt(pageNum), content });
   }),
   orderListById: asyncHandler(async (req, res) => {
