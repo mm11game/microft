@@ -35,4 +35,3 @@ app.get("*", (req, res) =>
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-// app.listen(3000, "https://mycroft-test-api.herokuapp.com/");

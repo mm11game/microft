@@ -5,16 +5,7 @@ const OrderObj = ({ order }) => {
   const history = useHistory()
   return (
     <div
-      style={{
-        border: '1px solid',
-        width: '200px',
-        height: '50px',
-        padding: '10px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '10px',
-      }}
+      style={{ border: '1px solid' }}
       onClick={() => {
         history.push(`/mypage/order/${order.id}`)
       }}>

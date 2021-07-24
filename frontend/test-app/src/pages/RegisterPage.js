@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { tokenState } from '../atom/atom'
-import '../css/RegisterPage.css'
 const axios = require('axios')
 
 const RegisterPage = () => {
   const [token, setToken] = useRecoilState(tokenState)
-  const [valid, setValid] = useState(false)
-  const [validPassword, setValidPassword] = useState(false)
   const [details, setDetails] = useState({
     email: '',
     password: '',
@@ -16,27 +13,24 @@ const RegisterPage = () => {
     mobile: '',
   })
   const history = useHistory()
-  const inputEl = useRef(null)
 
   const registerAndSaveToken = async () => {
+    //이메일 유효성 검증 //cursor가 이동한다. // input이 빨간색으로 변함
     if (details.email.indexOf('@') === -1) {
       alert('이메일 형식이 틀립니다.')
-      inputEl.current.focus()
-      setValid(true)
       return
     }
-
+    //비밀번호는 8~15
     if (details.password.length < 8 || details.password.length > 15) {
       alert('비밀번호를 확인해주세요')
-      setValidPassword(true)
       return
     }
-
+    //비밀번호 일치여부 확인
     if (details.password !== details.password2) {
       alert('비밀번호가 다름')
       return
     }
-
+    //가입 성공시 서비스 페이지로 이동
     const body = { ...details }
     const { data } = await axios.post('http://localhost:5000/sign-up', body, {
       'Context-Type': 'application/json',
@@ -47,18 +41,12 @@ const RegisterPage = () => {
     history.push('/')
   }
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}>
-      <h1 style={{ padding: '10px', marginBottom: '10px' }}>가입하기</h1>
-
+    <div>
+      <h1>가입 페이지</h1>
+      <div>
+        <Link to="/">Back</Link>
+      </div>
       <input
-        className={valid ? 'invalid' : null}
-        ref={inputEl}
-        style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="이메일"
         name="email"
         onChange={(e) => {
@@ -66,8 +54,6 @@ const RegisterPage = () => {
           setDetails({ ...details, email: e.target.value })
         }}></input>
       <input
-        className={validPassword ? 'invalid' : null}
-        style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="비밀번호"
         name="password"
         onChange={(e) => {
@@ -75,25 +61,19 @@ const RegisterPage = () => {
           setDetails({ ...details, password: e.target.value })
         }}></input>
       <input
-        style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="비밀번호확인"
         name="password2"
         onChange={(e) =>
           setDetails({ ...details, password2: e.target.value })
         }></input>
       <input
-        style={{ padding: '10px', marginBottom: '10px' }}
         placeholder="전화번호"
         name="mobile"
         onChange={(e) =>
           setDetails({ ...details, mobile: e.target.value })
         }></input>
 
-      <button
-        style={{ padding: '10px', marginBottom: '10px' }}
-        onClick={registerAndSaveToken}>
-        가입하기
-      </button>
+      <button onClick={registerAndSaveToken}>가입하기</button>
     </div>
   )
 }
