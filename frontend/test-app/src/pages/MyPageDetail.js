@@ -20,7 +20,13 @@ const MyPageDetail = ({ match }) => {
     fetchData()
   }, [])
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        border: '1px solid black',
+        padding: '50px',
+      }}>
       <div>{item.id}</div>
       <div>{item.itemName}</div>
     </div>
