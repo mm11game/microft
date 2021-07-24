@@ -3,21 +3,24 @@ dotenv.config();
 
 const config = {
   development: {
-    host: process.env.DB_HOST,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
+    host: "127.0.0.1",
+    username: "root",
+    password: "cjswo12",
     database: "microft",
     dialect: "mysql",
     port: 3306,
   },
   production: {
-    host: process.env.DBH_OST,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
+    host: "127.0.0.1",
+    username: "root",
+    password: "cjswo12",
     database: "microft",
     dialect: "mysql",
     port: 3306,
   },
 };
 
+// DB_PASSWORD=cjswo12
+// DB_HOST=127.0.0.1
+// DB_USER=root
 module.exports = config;
