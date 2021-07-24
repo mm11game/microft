@@ -4,3 +4,5 @@
 /backend/.env
 .env
 node_modules
+
+/frontend/test-app/build

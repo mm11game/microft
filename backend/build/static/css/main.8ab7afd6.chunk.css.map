@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/css/RegisterPage.css"],"names":[],"mappings":"AAAA,SACE,YAAa,CACb,oBACF","file":"main.8ab7afd6.chunk.css","sourcesContent":[".invalid {\n  outline: none;\n  border: 2px solid red;\n}\n"]}
