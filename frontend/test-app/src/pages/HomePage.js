@@ -43,8 +43,13 @@ const HomePage = () => {
   }
   return (
     <div>
-      <div>홈페이지</div>
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexFlow: 'row wrap',
+          padding: '50px',
+        }}>
         {items.map((item) => (
           <ItemObj key={item.id} item={item} handleOrder={handleOrder} />
         ))}
