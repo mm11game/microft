@@ -28,7 +28,8 @@ const Header = () => {
                 style={{
                   display: 'inline-block',
                   width: '50px',
-                }}></img>
+                }}
+                alt="kiun"></img>
             </Link>
           </div>
           <div>
@@ -58,7 +59,8 @@ const Header = () => {
                 style={{
                   display: 'inline-block',
                   width: '50px',
-                }}></img>
+                }}
+                alt="kiun"></img>
             </Link>
           </div>
           <div>

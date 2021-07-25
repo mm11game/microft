@@ -5,14 +5,21 @@ const ItemObj = ({ item, handleOrder }) => {
     <div
       style={{
         border: '1px solid black',
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'column',
+        alignItems: 'center',
         width: '200px',
         height: '200px',
         padding: '10px',
         marginBottom: '10px',
       }}>
+      <div>{item.itemName}</div>
+      <img
+        src={item.image}
+        style={{ width: '120px', height: '120px' }}
+        alt="kiun"></img>
       <div>
-        <div>{item.itemName}</div>
-        <div>{item.image}</div>
         <button
           onClick={() => {
             handleOrder(item.id)

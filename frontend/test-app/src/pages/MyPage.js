@@ -9,7 +9,7 @@ const MyPage = ({ location }) => {
   const page = location.search ? location.search.split('=')[1] : 0
   const [token, setToken] = useRecoilState(tokenState)
   const [orders, setOrders] = useState([])
-  const [totalPage, setTotalPage] = useState(3)
+  const [totalPage, setTotalPage] = useState(0)
   const history = useHistory()
 
   useEffect(() => {

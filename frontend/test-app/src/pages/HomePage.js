@@ -30,7 +30,6 @@ const HomePage = () => {
       alert('로그인이 필요')
       history.push('/sign-up')
     } else {
-      //백앤드에서 1초 슬립해서 보낸다?
       let body = {
         itemId: id,
       }
