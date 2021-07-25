@@ -20,6 +20,7 @@ const RegisterPage = () => {
 
   const registerAndSaveToken = async () => {
     if (details.email.indexOf('@') === -1) {
+      console.log(inputEl)
       alert('이메일 형식이 틀립니다.')
       inputEl.current.focus()
       setValid(true)

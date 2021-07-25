@@ -27,6 +27,8 @@ module.exports = {
   logIn: asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
+    console.dir(req);
+
     if (password.length < 8) {
       res.status(401);
       throw new Error("패스워드 짧음");
